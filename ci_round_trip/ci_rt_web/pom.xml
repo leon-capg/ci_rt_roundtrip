@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.capgemini.test</groupId>
+    <artifactId>ci_round_trip</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.capgemini.test</groupId>
+  <artifactId>ci_rt_web</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>ci_rt_web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <build>
+    <finalName>ci_rt_web</finalName>
+  </build>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.sun.faces</groupId>
+  		<artifactId>jsf-api</artifactId>
+  		<version>2.2.14</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.sun.faces</groupId>
+  		<artifactId>jsf-impl</artifactId>
+  		<version>2.2.14</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-web</artifactId>
+  		<version>4.3.10.RELEASE</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.capgemini.test</groupId>
+  		<artifactId>ci_rt_data</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+</project>
