@@ -7,7 +7,6 @@
     <artifactId>ci_round_trip</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.capgemini.test</groupId>
   <artifactId>ci_rt_ws</artifactId>
   <packaging>war</packaging>
   <name>ci_rt_ws Maven Webapp</name>
