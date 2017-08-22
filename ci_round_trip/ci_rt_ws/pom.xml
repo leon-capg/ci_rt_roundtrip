@@ -9,19 +9,27 @@
   </parent>
   <groupId>com.capgemini.test</groupId>
   <artifactId>ci_rt_ws</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>ci_rt_ws Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
   <build>
     <finalName>ci_rt_ws</finalName>
   </build>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.capgemini.test</groupId>
+  		<artifactId>ci_rt_data</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-webmvc</artifactId>
+  		<version>4.3.10.RELEASE</version>
+  	</dependency>
+  	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.5.0</version>
+	</dependency>
+  </dependencies>
 </project>
