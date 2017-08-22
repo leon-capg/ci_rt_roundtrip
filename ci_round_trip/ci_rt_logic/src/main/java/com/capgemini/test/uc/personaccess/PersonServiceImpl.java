@@ -36,8 +36,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		return personDao.delete(id);
 	}
 
 }

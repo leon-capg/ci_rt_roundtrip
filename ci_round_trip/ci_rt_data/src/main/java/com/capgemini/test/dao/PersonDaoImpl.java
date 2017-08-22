@@ -30,12 +30,13 @@ public class PersonDaoImpl implements PersonDao{
 				System.out.println(entity.getId() + " - " + entity.getLastName() + ", " + entity.getFirstName());
 				beanList.add(DozerBeanMapperSingletonWrapper.getInstance().map(entity, PersonBean.class));
 			}
+			System.out.println("number of persons: " + entityList.size());
 			tran.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			tran.rollback();
 		}
-		finally {
+		finally {			
 			entityManager.close();
 		}
 		return beanList;
@@ -46,14 +47,16 @@ public class PersonDaoImpl implements PersonDao{
 		return null;
 	}
 
-	public boolean add(PersonBean person) {
+	public boolean add(PersonBean personBean) {
 		boolean success = true;
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction tran = entityManager.getTransaction();
 	    tran.begin();
 		try {
+			PersonEntity person = DozerBeanMapperSingletonWrapper.getInstance().map(personBean, PersonEntity.class);
 			entityManager.persist(person);
 			tran.commit();
+			System.out.println("added new person ");
 		} catch (Exception e) {
 			e.printStackTrace();
 			tran.rollback();
@@ -71,8 +74,23 @@ public class PersonDaoImpl implements PersonDao{
 	}
 
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = true;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction tran = entityManager.getTransaction();
+	    tran.begin();
+		try {
+			int updates = entityManager.createQuery("delete from PersonEntity where id = :id").setParameter("id", id).executeUpdate();
+			tran.commit();
+			System.out.println("deleted person with id: "  + id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			tran.rollback();
+			success = false;
+		}
+		finally {
+			entityManager.close();
+		}
+		return success;
 	}
 
 }
