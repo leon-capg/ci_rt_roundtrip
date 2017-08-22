@@ -7,19 +7,27 @@ import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capgemini.test.data.PersonBean;
 import com.capgemini.test.uc.personaccess.PersonService;
 import com.capgemini.test.ws.model.PersonWS;
 
+/**
+ * 
+ * @author lbeutl
+ *
+ * Rest service to retrieve {@link PersonWS} information from the application in JSON format
+ */
 @RestController
 public class PersonController {
 
 	@Autowired
 	PersonService personService;
 	
+	/**
+	 * @return all {@link PersonWS} from the application as JSON object array.
+	 */
 	@RequestMapping(path="/person")
 	public List<PersonWS> getPersonList() {
 		List<PersonBean> beanList = personService.list();
@@ -30,6 +38,10 @@ public class PersonController {
 		return wsList;
 	}
 	
+	/**
+	 * @param id of {@link PersonWS} to return
+	 * @return the {@link PersonWS} for the id
+	 */
 	@RequestMapping(path="/person/{id}")
 	public PersonWS getPerson(@PathVariable("id") Integer id) {
 		List<PersonBean> beanList = personService.list();
