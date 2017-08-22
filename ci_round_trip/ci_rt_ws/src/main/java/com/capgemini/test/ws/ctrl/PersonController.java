@@ -13,12 +13,21 @@ import com.capgemini.test.data.PersonBean;
 import com.capgemini.test.uc.personaccess.PersonService;
 import com.capgemini.test.ws.model.PersonWS;
 
+/**
+ * 
+ * @author lbeutl
+ *
+ * Rest service to retrieve {@link PersonWS} information from the application in JSON format
+ */
 @RestController
 public class PersonController {
 
 	@Autowired
 	PersonService personService;
 	
+	/**
+	 * @return all {@link PersonWS} from the application as JSON object array.
+	 */
 	@RequestMapping(path="/person")
 	public List<PersonWS> getPersonList() {
 		List<PersonBean> beanList = personService.list();
@@ -29,6 +38,10 @@ public class PersonController {
 		return wsList;
 	}
 	
+	/**
+	 * @param id of {@link PersonWS} to return
+	 * @return the {@link PersonWS} for the id
+	 */
 	@RequestMapping(path="/person/{id}")
 	public PersonWS getPerson(@PathVariable("id") Integer id) {
 		return DozerBeanMapperSingletonWrapper.getInstance().map(personService.get(id), PersonWS.class);
