@@ -9,6 +9,7 @@
   	<module>ci_rt_data</module>
   	<module>ci_rt_logic</module>
     <module>ci_rt_web</module>
+    <module>ci_rt_ws</module>
   </modules>
   <dependencies>
   	<dependency>
