@@ -2,12 +2,9 @@ package com.capgemini.test.uc.personaccess;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.capgemini.test.dao.PersonDao;
 import com.capgemini.test.data.PersonBean;
 
-public interface UCPersonAccess {
+public interface PersonService {
 
 	List<PersonBean> list();
 	

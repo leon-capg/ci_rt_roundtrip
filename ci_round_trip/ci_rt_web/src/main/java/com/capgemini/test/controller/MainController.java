@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.capgemini.test.data.PersonBean;
 import com.capgemini.test.model.PersonGUI;
-import com.capgemini.test.uc.personaccess.UCPersonAccess;
+import com.capgemini.test.uc.personaccess.PersonService;
 
 @Component("main")
 @Scope("request")
@@ -21,7 +21,7 @@ public class MainController implements Serializable {
 	private List<PersonGUI> personList;
 	
 	@Autowired
-	UCPersonAccess personAccess;
+	PersonService personAccess;
 	
 	public List<PersonGUI> readPersonList() {
 		List<PersonBean> beanList = personAccess.list();
@@ -38,5 +38,8 @@ public class MainController implements Serializable {
 			System.out.println("[" + System.currentTimeMillis() + "] reading person list...");
 		}
 		return personList;
+	}
+	
+	public void addPerson() {
 	}
 }

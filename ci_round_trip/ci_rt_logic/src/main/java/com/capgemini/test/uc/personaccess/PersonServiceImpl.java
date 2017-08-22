@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.capgemini.test.dao.PersonDao;
 import com.capgemini.test.data.PersonBean;
 
-public class UCPersonAccessImpl implements UCPersonAccess {
+public class PersonServiceImpl implements PersonService {
 
 	@Autowired
 	PersonDao personDao;
@@ -25,8 +25,7 @@ public class UCPersonAccessImpl implements UCPersonAccess {
 
 	@Override
 	public boolean add(PersonBean person) {
-		// TODO Auto-generated method stub
-		return false;
+		return personDao.add(person);
 	}
 
 	@Override

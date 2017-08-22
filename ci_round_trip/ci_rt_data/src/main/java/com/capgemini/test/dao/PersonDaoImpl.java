@@ -47,8 +47,22 @@ public class PersonDaoImpl implements PersonDao{
 	}
 
 	public boolean add(PersonBean person) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean success = true;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction tran = entityManager.getTransaction();
+	    tran.begin();
+		try {
+			entityManager.persist(person);
+			tran.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tran.rollback();
+			success = false;
+		}
+		finally {
+			entityManager.close();
+		}
+		return success;
 	}
 
 	public boolean update(PersonBean person) {
