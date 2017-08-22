@@ -43,8 +43,22 @@ public class PersonDaoImpl implements PersonDao{
 	}
 
 	public PersonBean get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		PersonBean bean = null;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		EntityTransaction tran = entityManager.getTransaction();
+	    tran.begin();
+		try {
+			PersonEntity entity = entityManager.createQuery("from PersonEntity where id = :id", PersonEntity.class).setParameter("id", id).getSingleResult();
+			bean = DozerBeanMapperSingletonWrapper.getInstance().map(entity, PersonBean.class);
+			tran.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tran.rollback();
+		}
+		finally {			
+			entityManager.close();
+		}
+		return bean;
 	}
 
 	public boolean add(PersonBean personBean) {
@@ -79,7 +93,7 @@ public class PersonDaoImpl implements PersonDao{
 		EntityTransaction tran = entityManager.getTransaction();
 	    tran.begin();
 		try {
-			int updates = entityManager.createQuery("delete from PersonEntity where id = :id").setParameter("id", id).executeUpdate();
+			entityManager.createQuery("delete from PersonEntity where id = :id").setParameter("id", id).executeUpdate();
 			tran.commit();
 			System.out.println("deleted person with id: "  + id);
 		} catch (Exception e) {

@@ -19,8 +19,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public PersonBean get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return personDao.get(id);
 	}
 
 	@Override
