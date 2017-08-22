@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capgemini.test.data.PersonBean;
@@ -19,13 +21,27 @@ public class PersonController {
 	PersonService personService;
 	
 	@RequestMapping(path="/person")
-	public List<PersonWS> getPerson() {
+	public List<PersonWS> getPersonList() {
 		List<PersonBean> beanList = personService.list();
 		List<PersonWS> wsList = new ArrayList<>();
 		for(PersonBean bean : beanList) {
 			wsList.add(DozerBeanMapperSingletonWrapper.getInstance().map(bean, PersonWS.class));
 		}
 		return wsList;
+	}
+	
+	@RequestMapping(path="/person/{id}")
+	public PersonWS getPerson(@PathVariable("id") Integer id) {
+		List<PersonBean> beanList = personService.list();
+		PersonWS person = null;
+		if(id != null) {
+			for(PersonBean bean : beanList) {
+				if(bean.getId() == id) {
+					person = DozerBeanMapperSingletonWrapper.getInstance().map(bean, PersonWS.class);
+				}
+			}
+		}
+		return person;
 	}
 	
 }
