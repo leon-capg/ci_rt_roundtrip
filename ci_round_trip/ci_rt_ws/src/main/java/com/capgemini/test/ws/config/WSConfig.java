@@ -10,7 +10,7 @@ import com.capgemini.test.uc.personaccess.PersonServiceImpl;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.capgemini.test"})
+@ComponentScan({"com.capgemini.test.ws.ctrl", "com.capgemini.test.ws.model"})
 public class WSConfig {
 	
 	@Bean

@@ -8,7 +8,7 @@ import com.capgemini.test.uc.personaccess.PersonService;
 import com.capgemini.test.uc.personaccess.PersonServiceImpl;
 
 @Configuration
-@ComponentScan(basePackages = {"com.capgemini.test"})
+@ComponentScan({"com.capgemini.test.controller", "comp.capgemini.test.model"})
 public class WebAppConfig {
 
 	@Bean
