@@ -36,7 +36,7 @@ public class TestPersistenceJPAConfig{
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:./target/h2db");
+		dataSource.setUrl("jdbc:h2:/usr/share/h2/h2db");
 		dataSource.setUsername("sa");
 		System.out.println("using H2 database");
 		return dataSource;
